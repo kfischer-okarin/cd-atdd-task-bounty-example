@@ -76,7 +76,6 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
-    bcrypt_pbkdf (1.1.1)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
@@ -101,9 +100,7 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    dotenv (3.1.7)
     drb (2.2.1)
-    ed25519 (1.3.0)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -127,17 +124,6 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.9.1)
-    kamal (2.4.0)
-      activesupport (>= 7.0)
-      base64 (~> 0.2)
-      bcrypt_pbkdf (~> 1.0)
-      concurrent-ruby (~> 1.2)
-      dotenv (~> 3.1)
-      ed25519 (~> 1.2)
-      net-ssh (~> 7.3)
-      sshkit (>= 1.23.0, < 2.0)
-      thor (~> 1.3)
-      zeitwerk (>= 2.6.18, < 3.0)
     language_server-protocol (3.17.0.4)
     logger (1.6.5)
     loofah (2.24.0)
@@ -160,12 +146,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-scp (4.1.0)
-      net-ssh (>= 2.6.5, < 8.0.0)
-    net-sftp (4.0.0)
-      net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.5.0)
-    net-ssh (7.3.0)
     nio4r (2.7.4)
     nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
@@ -181,7 +162,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.2-x86_64-linux-musl)
       racc (~> 1.4)
-    ostruct (0.6.1)
     parallel (1.26.3)
     parser (3.3.7.0)
       ast (~> 2.4.1)
@@ -307,12 +287,6 @@ GEM
     sqlite3 (2.5.0-arm64-darwin)
     sqlite3 (2.5.0-x86_64-linux-gnu)
     sqlite3 (2.5.0-x86_64-linux-musl)
-    sshkit (1.23.2)
-      base64
-      net-scp (>= 1.1.2)
-      net-sftp (>= 2.1.2)
-      net-ssh (>= 2.8.0)
-      ostruct
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.2)
@@ -364,7 +338,6 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
-  kamal
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
