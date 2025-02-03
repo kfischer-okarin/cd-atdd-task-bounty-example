@@ -1,0 +1,27 @@
+#!/bin/bash
+
+CONTAINER_NAME="cd-atdd-task-bounty-example"
+
+if [ "$#" -lt 2 ]; then
+  echo "Usage: $0 <image> <port> [additional docker run options]"
+  exit 1
+fi
+
+image=$1
+shift
+port=$1
+shift
+
+# Stop and remove the container if it exists
+docker rm -f "$CONTAINER_NAME" > /dev/null 2>&1
+
+container_id=$(docker run -d --rm --name "$CONTAINER_NAME" -p $port:3000 "$@" $image)
+docker logs -f $container_id 2>&1 > ./tmp/docker.log &
+
+if [ $? -ne 0 ]; then
+  echo "Failed to start container"
+  exit 1
+fi
+
+echo "Application running at http://localhost:$port"
+echo "Logs available at $(pwd)/tmp/docker.log"
