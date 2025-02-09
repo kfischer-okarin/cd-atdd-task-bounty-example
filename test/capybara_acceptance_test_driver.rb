@@ -30,6 +30,13 @@ class CapybaraAcceptanceTestDriver
     @capybara = CapybaraAPI.new(test_case)
   end
 
+  def create_user(name)
+    @capybara.visit "/users/new"
+    @capybara.fill_in "Name", with: name
+    @capybara.click_on "Create User"
+    @capybara.assert_text "User was successfully created."
+  end
+
   def it_works
     @capybara.visit "/"
     @capybara.assert_text "The page you were looking for doesn’t exist."
