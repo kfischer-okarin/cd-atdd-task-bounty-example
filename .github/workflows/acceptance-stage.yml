@@ -34,7 +34,7 @@ jobs:
                                       -e SECRET_KEY_BASE=arbitrarysecretkeybase
 
       - name: Run Acceptance Tests
-        run: ./bin/rails test:system
+        run: ./bin/rails test:system --exclude /^test_WIP:/
         env:
           APP_URL: http://localhost:3000
 
