@@ -1,0 +1,22 @@
+<h1 class="title">Login</h1>
+
+<% if flash[:alert] %>
+  <div class="notification is-danger">
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
+<% end %>
+
+<%= form_with url: login_path, local: true, html: { class: 'box' } do |form| %>
+  <div class="field">
+    <label class="label"><%= form.label :name %></label>
+    <div class="control">
+      <%= form.text_field :name, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit 'Login', class: 'button is-link' %>
+    </div>
+  </div>
+<% end %>

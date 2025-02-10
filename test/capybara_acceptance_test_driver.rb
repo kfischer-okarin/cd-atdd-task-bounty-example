@@ -37,6 +37,13 @@ class CapybaraAcceptanceTestDriver
     @capybara.assert_text "User was successfully created."
   end
 
+  def login_as(name)
+    @capybara.visit "/login"
+    @capybara.fill_in "Name", with: name
+    @capybara.click_on "Login"
+    @capybara.assert_text "Successfully logged in."
+  end
+
   def it_works
     @capybara.visit "/"
     @capybara.assert_text "The page you were looking for doesn’t exist."

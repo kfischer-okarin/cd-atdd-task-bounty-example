@@ -10,4 +10,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
   end
+
+  test "should not login with non-existing user" do
+    post login_path, params: { name: "non_existing_user" }
+
+    assert_response :unprocessable_entity
+  end
 end
