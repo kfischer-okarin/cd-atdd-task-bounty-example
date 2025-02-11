@@ -53,11 +53,6 @@ class CapybaraAcceptanceTestDriver
     @capybara.assert_text "Bounty was successfully posted."
   end
 
-  def it_works
-    @capybara.visit "/"
-    @capybara.assert_text "The page you were looking for doesn’t exist."
-  end
-
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver
