@@ -1,11 +1,5 @@
 <h1 class="title">New User</h1>
 
-<% if flash[:notice] %>
-  <div class="notification is-primary">
-    <p id="notice"><%= flash[:notice] %></p>
-  </div>
-<% end %>
-
 <%= form_with model: @user, local: true, html: { class: 'box' } do |form| %>
   <% if @user.errors.any? %>
     <div class="notification is-danger">

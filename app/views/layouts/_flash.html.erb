@@ -1,0 +1,7 @@
+<% flash.each do |key, message| %>
+  <% css_class = key == 'notice' ? 'is-primary' : 'is-danger' %>
+  <div class="notification <%= css_class %>">
+    <button class="delete my-auto" onclick="this.parentElement.style.display='none'"></button>
+    <%= message %>
+  </div>
+<% end %>
