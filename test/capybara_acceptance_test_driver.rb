@@ -45,7 +45,7 @@ class CapybaraAcceptanceTestDriver
   end
 
   def post_bounty(title:, bounty:)
-    @capybara.visit "/"
+    go_to_dashboard
     @capybara.click_on "Post a Bounty"
     @capybara.fill_in "Title", with: title
     @capybara.fill_in "Bounty", with: bounty
@@ -61,5 +61,12 @@ class CapybaraAcceptanceTestDriver
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver
+  end
+
+  private
+
+  def go_to_dashboard
+    @capybara.visit "/"
+    @capybara.assert_text "Dashboard"
   end
 end
