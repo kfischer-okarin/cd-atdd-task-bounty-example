@@ -16,4 +16,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
   end
+
+  test "should redirect to root if already logged in" do
+    user = User.create!(name: "logged_in_user")
+    post login_path, params: { name: user.name }
+    follow_redirect!
+
+    get login_path
+    assert_redirected_to root_path
+  end
 end
