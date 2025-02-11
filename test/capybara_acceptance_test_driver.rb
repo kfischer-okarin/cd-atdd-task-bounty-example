@@ -44,6 +44,15 @@ class CapybaraAcceptanceTestDriver
     @capybara.assert_text "Successfully logged in."
   end
 
+  def post_bounty(title:, bounty:)
+    @capybara.visit "/"
+    @capybara.click_on "Post a Bounty"
+    @capybara.fill_in "Title", with: title
+    @capybara.fill_in "Bounty", with: bounty
+    @capybara.click_on "Post Bounty"
+    @capybara.assert_text "Bounty was successfully posted."
+  end
+
   def it_works
     @capybara.visit "/"
     @capybara.assert_text "The page you were looking for doesn’t exist."
