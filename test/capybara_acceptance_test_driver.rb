@@ -59,6 +59,16 @@ class CapybaraAcceptanceTestDriver
     @capybara.assert_text "Bounty was successfully posted."
   end
 
+  def list_open_bounties
+    go_to_dashboard
+    open_bounties_headline = @capybara.find("h2", text: "Open Bounties")
+    table = open_bounties_headline.sibling("table")
+    table.all("tr").map { |row|
+      title, reward, posted_by = row.all("td").map(&:text)
+      { title: title, reward: reward.to_i, posted_by: posted_by }
+    }
+  end
+
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver

@@ -2,6 +2,6 @@ class PagesController < ApplicationController
   before_action :require_login
 
   def dashboard
-    # Logic for displaying the dashboard can be added here
+    @open_bounties = Bounty.where.not(posted_by: current_user)
   end
 end

@@ -4,4 +4,23 @@
   <div class="buttons">
     <a href="<%= new_bounty_path %>" class="button is-primary">Post a Bounty</a>
   </div>
+  <h2 class="title is-4">Open Bounties</h2>
+  <table class="table is-fullwidth is-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Reward</th>
+        <th>Posted By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @open_bounties.each do |bounty| %>
+        <tr>
+          <td><%= bounty.title %></td>
+          <td><%= bounty.reward %></td>
+          <td><%= bounty.posted_by.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
