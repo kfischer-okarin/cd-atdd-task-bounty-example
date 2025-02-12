@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post "login", to: "users#login"
 
   resources :users, only: %i[new create]
+  resources :bounties, only: %i[new create]
 
   # Defines the root path route ("/")
   root "pages#dashboard"

@@ -1,0 +1,23 @@
+<h1 class="title">Post a New Bounty</h1>
+
+<%= form_with model: @bounty, local: true, class: 'box' do |form| %>
+  <div class="field">
+    <%= form.label :title, class: 'label' %>
+    <div class="control">
+      <%= form.text_field :title, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :reward, class: 'label' %>
+    <div class="control">
+      <%= form.number_field :reward, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit 'Post Bounty', class: 'button is-primary' %>
+    </div>
+  </div>
+<% end %>
