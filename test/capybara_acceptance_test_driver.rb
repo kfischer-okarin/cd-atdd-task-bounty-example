@@ -44,11 +44,11 @@ class CapybaraAcceptanceTestDriver
     @capybara.assert_text "Successfully logged in."
   end
 
-  def post_bounty(title:, bounty:)
+  def post_bounty(title:, reward:)
     go_to_dashboard
     @capybara.click_on "Post a Bounty"
     @capybara.fill_in "Title", with: title
-    @capybara.fill_in "Bounty", with: bounty
+    @capybara.fill_in "Reward", with: reward
     @capybara.click_on "Post Bounty"
     @capybara.assert_text "Bounty was successfully posted."
   end

@@ -6,11 +6,11 @@ class PostBountyTest < ApplicationSystemTestCase
     given_a_user "Alice"
 
     as "Bob" do
-      post_a_bounty "Fix the login page", bounty: 40
+      post_a_bounty "Fix the login page", reward: 40
     end
 
     as "Alice" do
-      should_see_open_task "Fix the login page", bounty: 40
+      should_see_open_task "Fix the login page", reward: 40, posted_by: "Bob"
     end
   end
 end
