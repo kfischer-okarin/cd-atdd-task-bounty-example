@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get "login", to: "users#login_form"
   post "login", to: "users#login"
+  get "logout", to: "users#logout"
 
   resources :users, only: %i[new create]
   resources :bounties, only: %i[new create]

@@ -44,6 +44,12 @@ class CapybaraAcceptanceTestDriver
     @capybara.assert_text "Successfully logged in."
   end
 
+  def logout
+    go_to_dashboard
+    @capybara.click_on "Logout"
+    @capybara.assert_text "Successfully logged out."
+  end
+
   def post_bounty(title:, reward:)
     go_to_dashboard
     @capybara.click_on "Post a Bounty"

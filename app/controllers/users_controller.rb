@@ -29,6 +29,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    reset_session
+    redirect_to login_path, notice: "Successfully logged out."
+  end
+
   private
 
   def user_params
