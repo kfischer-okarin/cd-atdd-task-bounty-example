@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 class PostBountyTest < ApplicationSystemTestCase
-  test "WIP: Posted bounties appear in the open task list" do
+  test "Posted bounties appear in the open task list" do
     given_a_user "Bob"
     given_a_user "Alice"
 
