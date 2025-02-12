@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_11_020031) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_12_054015) do
+  create_table "bounties", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "reward", null: false
+    t.integer "posted_by_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["posted_by_id"], name: "index_bounties_on_posted_by_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_users_on_name", unique: true
   end
+
+  add_foreign_key "bounties", "users", column: "posted_by_id"
 end
