@@ -1,8 +1,8 @@
 require "test_helper"
 
-require_relative "acceptance_test_dsl"
-require_relative "capybara_acceptance_test_driver"
-require_relative "id_alias_map"
+require_relative "support/acceptance_test_dsl"
+require_relative "support/capybara_acceptance_test_driver"
+require_relative "support/id_alias_map"
 
 class ApplicationSystemTestCase < ActiveSupport::TestCase
   include AcceptanceTestDSL
