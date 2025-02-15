@@ -4,24 +4,25 @@ Pipeline (as proposed by Dave Farley) in a Rails project implemented using
 GitHub Actions.
 
 
-## Deployment Pipeline
+## Implemented Techniques
+### Deployment Pipeline
 The deployment pipeline consists of three main stages:
 
-### 1. Commit Stage
+#### 1. Commit Stage
 This stage runs on every pull request and push. It includes jobs for scanning
 Ruby and JavaScript code for security vulnerabilities, linting the code for
 consistent style, and running unit tests.
 
 **Implementation:** [`.github/workflows/commit-stage.yml`](.github/workflows/commit-stage.yml)
 
-### 2. Create Artifact
+#### 2. Create Artifact
 This stage runs after the successful completion of the Commit Stage on the `main`
 branch. It builds a Docker image as artifact, tags it with the current commit
 SHA and pushes it to Docker Hub.
 
 **Implementation:** [`.github/workflows/create-artifact.yml`](.github/workflows/create-artifact.yml)
 
-### 3. Acceptance Stage
+#### 3. Acceptance Stage
 This stage runs after the successful completion of the Create Artifact stage. It
 starts a Docker container from the built image and runs acceptance tests against
 it.
@@ -29,17 +30,17 @@ it.
 **Implementation:** [`.github/workflows/acceptance-stage.yml`](.github/workflows/acceptance-stage.yml)
 
 
-## 4 Layer Acceptance Test Architecture
+### 4 Layer Acceptance Test Architecture
 The acceptance tests are written using the 4 Layer Acceptance Test
 Architecture (also proposed by Dave Farley).
 
-### 1. Test Cases
+#### 1. Test Cases
 This layer contains the actual test cases that define the acceptance criteria.
 The test cases are written solely using the DSL layer.
 
 **Implementation:** [`test/system/`](test/system/) directory
 
-### 2. DSL (Domain-Specific Language)
+#### 2. DSL (Domain-Specific Language)
 This layer provides a high-level language to describe actions and assertions
 from a business perspective, typically from the point of view of an end user.
 It is recommended to avoid mentioning technical details or UI elements,
@@ -55,7 +56,7 @@ Responsibilities of the DSL layer include:
 
 **Implementation:** [`test/support/acceptance_test_dsl.rb`](test/support/acceptance_test_dsl.rb) included inside [`test/application_system_test_case.rb`](test/application_system_test_case.rb)
 
-### 3. Protocol Driver
+#### 3. Protocol Driver
 This layer interacts with the system under test using a specific protocol
 (commonly through the UI or a web API). It translates high-level commands from
 the DSL into low-level operations, handling *how* business actions are executed
@@ -67,7 +68,7 @@ underlying protocol.
 
 **Implementation:** [`test/support/capybara_acceptance_test_driver.rb`](test/support/capybara_acceptance_test_driver.rb)
 
-### 4. System Under Test
+#### 4. System Under Test
 This is the actual application or system being tested. When executing
 acceptance tests, it is crucial to have an environment that closely mirrors a
 real production environment to accurately assess whether the application
@@ -83,6 +84,7 @@ To achieve this, the system must be designed to allow the injection and
 replacement of such dependencies through configuration, enabling seamless
 substitution of such external factors.
 
-## References for further Study
-- [Acceptance Testing Webinar (YouTube)](hhttps://www.youtube.com/watch?v=SuDIYk9GBpE)
+
+### References for further Study
+- [Acceptance Testing Webinar (YouTube)](https://www.youtube.com/watch?v=SuDIYk9GBpE)
 - [Continuous Delivery Webinar (YouTube)](https://www.youtube.com/watch?v=ONnwToAH4bU)
