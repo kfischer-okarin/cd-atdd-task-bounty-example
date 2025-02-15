@@ -7,6 +7,20 @@ GitHub Actions.
 > This example is not fit for production use as-is.
 > Check the [Things out of Scope](#things-out-of-scope) section for details.
 
+## Table of Contents
+- [Implemented Techniques](#implemented-techniques)
+  - [Deployment Pipeline](#deployment-pipeline)
+    - [1. Commit Stage](#1-commit-stage)
+    - [2. Create Artifact](#2-create-artifact)
+    - [3. Acceptance Stage](#3-acceptance-stage)
+  - [4 Layer Acceptance Test Architecture](#4-layer-acceptance-test-architecture)
+    - [1. Test Cases](#1-test-cases)
+    - [2. DSL (Domain-Specific Language)](#2-dsl-domain-specific-language)
+    - [3. Protocol Driver](#3-protocol-driver)
+    - [4. System Under Test](#4-system-under-test)
+- [References for further Study](#references-for-further-study)
+- [Things out of Scope](#things-out-of-scope)
+
 ## Implemented Techniques
 ### Deployment Pipeline
 The deployment pipeline consists of three main stages:
