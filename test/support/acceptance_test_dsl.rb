@@ -14,7 +14,7 @@ module AcceptanceTestDSL
     @driver.logout
   end
 
-  def post_a_bounty(title, reward: 20)
+  def post_bounty(title, reward: 20)
     @id_alias_map << title
     @driver.post_bounty(title: @id_alias_map[title], reward: reward)
   end

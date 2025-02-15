@@ -6,7 +6,7 @@ class PostBountyTest < ApplicationSystemTestCase
     given_a_user "Alice"
 
     as "Bob" do
-      post_a_bounty "Fix the login page", reward: 40
+      post_bounty "Fix the login page", reward: 40
     end
 
     as "Alice" do
