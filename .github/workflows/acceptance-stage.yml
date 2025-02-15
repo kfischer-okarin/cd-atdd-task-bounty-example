@@ -31,9 +31,7 @@ jobs:
         run: ./bin/deploy-to-acceptance-test-environment ${{ vars.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
 
       - name: Run Acceptance Tests
-        run: ./bin/rails test:system --exclude /^test_WIP:/
-        env:
-          APP_URL: http://localhost:3000
+        run: ./bin/run-acceptance-tests http://localhost:3000
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4

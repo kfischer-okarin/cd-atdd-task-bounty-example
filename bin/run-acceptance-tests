@@ -1,0 +1,11 @@
+#!/bin/bash
+
+app_url=$1
+
+if [ -z "$app_url" ]; then
+  echo "Usage: $0 <app_url>"
+  exit 1
+fi
+
+export APP_URL=$app_url
+./bin/rails test:system --exclude /^test_WIP:/
