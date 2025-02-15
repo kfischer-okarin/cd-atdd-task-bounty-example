@@ -1,4 +1,6 @@
 # Continuous Delivery Rails Example
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 This repository demonstrates a possible implementation of a simple Deployment
 Pipeline (as proposed by Dave Farley) in a Rails project implemented using
 GitHub Actions.
