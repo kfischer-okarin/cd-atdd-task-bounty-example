@@ -82,3 +82,7 @@ impossible to conduct reliably otherwise.
 To achieve this, the system must be designed to allow the injection and
 replacement of such dependencies through configuration, enabling seamless
 substitution of such external factors.
+
+## References for further Study
+- [Acceptance Testing Webinar (YouTube)](hhttps://www.youtube.com/watch?v=SuDIYk9GBpE)
+- [Continuous Delivery Webinar (YouTube)](https://www.youtube.com/watch?v=ONnwToAH4bU)
