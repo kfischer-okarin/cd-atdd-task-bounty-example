@@ -104,7 +104,7 @@ replacement of such dependencies through configuration, enabling seamless
 substitution of such external factors.
 
 
-### References for further Study
+## References for further Study
 - [Acceptance Testing Webinar (YouTube)](https://www.youtube.com/watch?v=SuDIYk9GBpE)
 - [Continuous Delivery Webinar (YouTube)](https://www.youtube.com/watch?v=ONnwToAH4bU)
 
