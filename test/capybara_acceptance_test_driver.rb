@@ -1,3 +1,4 @@
+require "action_dispatch/system_testing/test_helpers/screenshot_helper"
 require "capybara/dsl"
 require "capybara/minitest"
 
@@ -12,11 +13,11 @@ class CapybaraAcceptanceTestDriver
   class CapybaraAPI
     include Capybara::DSL
     include Capybara::Minitest::Assertions
+    include ActionDispatch::SystemTesting::TestHelpers::ScreenshotHelper
 
-    # Minitest assertions assume that they are direct instance methods of the test case and can access the assertion
-    # count to increment it for the test statistics. Since this object is not a test case, we need to delegate the
-    # assertions accessor to the test case.
-    delegate :assertions, :assertions=, to: :@test_case
+    # Minitest assertions and screenshot helper assume the class they are included in is a test case and need to
+    # access the test case's methods, so we delegate them to the test case
+    delegate_missing_to :@test_case
 
     def initialize(test_case)
       @test_case = test_case
@@ -70,6 +71,7 @@ class CapybaraAcceptanceTestDriver
   end
 
   def teardown
+    @capybara.take_failed_screenshot
     Capybara.reset_sessions!
     Capybara.use_default_driver
   end
