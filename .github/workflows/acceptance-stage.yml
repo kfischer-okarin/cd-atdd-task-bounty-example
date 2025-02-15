@@ -27,12 +27,8 @@ jobs:
           username: ${{ vars.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Start Docker container
-        run: |
-          ./bin/start-docker-instance ${{ vars.DOCKER_HUB_REPOSITORY }}:${{ github.sha }} \
-                                      3000 \
-                                      -e SECRET_KEY_BASE=arbitrarysecretkeybase \
-                                      -e RAILS_DISABLE_SSL=1
+      - name: Deploy to Acceptance Test Environment
+        run: ./bin/deploy-to-acceptance-test-environment ${{ vars.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
 
       - name: Run Acceptance Tests
         run: ./bin/rails test:system --exclude /^test_WIP:/

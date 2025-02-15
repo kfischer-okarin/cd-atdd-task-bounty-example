@@ -1,0 +1,16 @@
+#!/bin/bash
+
+docker_image=$1
+
+# Check if the Docker image argument is provided
+if [ -z "$docker_image" ]; then
+  echo "Usage: $0 <docker-image>"
+  exit 1
+fi
+
+# Replace this with the real deployment procedure, e.g. using Kamal to spin up a production-like environment
+
+$(dirname $0)/start-docker-instance $docker_image \
+                                    3000 \
+                                    -e SECRET_KEY_BASE=arbitrarysecretkeybase \
+                                    -e RAILS_DISABLE_SSL=1
