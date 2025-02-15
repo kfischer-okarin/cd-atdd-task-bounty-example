@@ -22,5 +22,11 @@ class CapybaraAcceptanceTestDriver
     def initialize(test_case)
       @test_case = test_case
     end
+
+    def teardown
+      take_failed_screenshot
+      Capybara.reset_sessions!
+      Capybara.use_default_driver
+    end
   end
 end

@@ -8,6 +8,10 @@ class CapybaraAcceptanceTestDriver
     @capybara = CapybaraAPI.new(test_case)
   end
 
+  def teardown
+    @capybara.teardown
+  end
+
   def create_user(name)
     @capybara.visit "/users/new"
     @capybara.fill_in "Name", with: name
@@ -45,12 +49,6 @@ class CapybaraAcceptanceTestDriver
       title, reward, posted_by = row.all("td").map(&:text)
       { title: title, reward: reward.to_i, posted_by: posted_by }
     }
-  end
-
-  def teardown
-    @capybara.take_failed_screenshot
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
   end
 
   private
