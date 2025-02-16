@@ -1,9 +1,10 @@
 module AcceptanceTestDSL
   ANY = Object.new.freeze
+  DEFAULT = Object.new.freeze
 
-  def given_a_user(name)
+  def given_a_user(name, balance: DEFAULT)
     @id_alias_map << name
-    @driver.create_user(@id_alias_map[name])
+    @driver.create_user(@id_alias_map[name], balance: balance)
   end
 
   def as(name, &block)

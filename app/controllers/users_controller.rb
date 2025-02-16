@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :redirect_if_logged_in, only: %i[login_form]
 
   def new
-    @user = User.new
+    @user = User.new(balance: 100)
   end
 
   def create
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :balance)
   end
 
   def redirect_if_logged_in

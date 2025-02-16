@@ -19,6 +19,13 @@
     </div>
   </div>
 
+  <div class="field">
+    <label class="label"><%= form.label :balance %></label>
+    <div class="control">
+      <%= form.number_field :balance, class: 'input' %>
+    </div>
+  </div>
+
   <div class="field is-grouped">
     <div class="control">
       <%= form.submit class: 'button is-link' %>

@@ -1,6 +1,9 @@
 <div class="container">
   <h1 class="title">Dashboard</h1>
   <p class="subtitle">Welcome to your dashboard!</p>
+  <div class="box">
+    <p><strong>Current Balance:</strong> <%= current_user.balance %></p>
+  </div>
   <div class="buttons">
     <a href="<%= new_bounty_path %>" class="button is-primary">Post a Bounty</a>
   </div>

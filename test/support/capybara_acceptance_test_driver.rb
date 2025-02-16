@@ -12,9 +12,10 @@ class CapybaraAcceptanceTestDriver
     @capybara.teardown
   end
 
-  def create_user(name)
+  def create_user(name, balance:)
     @capybara.visit "/users/new"
     @capybara.fill_in "Name", with: name
+    @capybara.fill_in "Balance", with: balance unless balance == AcceptanceTestDSL::DEFAULT
     @capybara.click_on "Create User"
     expect_notification "User was successfully created."
   end
