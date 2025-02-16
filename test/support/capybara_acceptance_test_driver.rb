@@ -16,20 +16,20 @@ class CapybaraAcceptanceTestDriver
     @capybara.visit "/users/new"
     @capybara.fill_in "Name", with: name
     @capybara.click_on "Create User"
-    @capybara.assert_text "User was successfully created."
+    expect_notification "User was successfully created."
   end
 
   def login_as(name)
     @capybara.visit "/login"
     @capybara.fill_in "Name", with: name
     @capybara.click_on "Login"
-    @capybara.assert_text "Successfully logged in."
+    expect_notification "Successfully logged in."
   end
 
   def logout
     go_to_dashboard
     @capybara.click_on "Logout"
-    @capybara.assert_text "Successfully logged out."
+    expect_notification "Successfully logged out."
   end
 
   def post_bounty(title:, reward:)
@@ -38,7 +38,7 @@ class CapybaraAcceptanceTestDriver
     @capybara.fill_in "Title", with: title
     @capybara.fill_in "Reward", with: reward
     @capybara.click_on "Post Bounty"
-    @capybara.assert_text "Bounty was successfully posted."
+    expect_notification "Bounty was successfully posted."
   end
 
   def list_open_bounties
@@ -56,5 +56,9 @@ class CapybaraAcceptanceTestDriver
   def go_to_dashboard
     @capybara.visit "/"
     @capybara.assert_text "Dashboard"
+  end
+
+  def expect_notification(message)
+    @capybara.assert_selector ".notification", text: message
   end
 end
