@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_12_054015) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_13_000000) do
   create_table "bounties", force: :cascade do |t|
     t.string "title", null: false
     t.integer "reward", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_12_054015) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "balance", default: 0, null: false
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
