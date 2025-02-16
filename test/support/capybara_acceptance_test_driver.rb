@@ -39,7 +39,12 @@ class CapybaraAcceptanceTestDriver
     @capybara.fill_in "Title", with: title
     @capybara.fill_in "Reward", with: reward
     @capybara.click_on "Post Bounty"
-    expect_notification "Bounty was successfully posted."
+    if @capybara.has_selector? ".notification.is-danger"
+      { errors: @capybara.all(".notification.is-danger").map(&:text) }
+    else
+      expect_notification "Bounty was successfully posted."
+      { errors: [] }
+    end
   end
 
   def list_open_bounties

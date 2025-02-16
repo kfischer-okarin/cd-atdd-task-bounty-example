@@ -17,7 +17,14 @@ module AcceptanceTestDSL
 
   def post_bounty(title, reward: 20)
     @id_alias_map << title
-    @driver.post_bounty(title: @id_alias_map[title], reward: reward)
+    result = @driver.post_bounty(title: @id_alias_map[title], reward: reward)
+    assert_empty result[:errors]
+  end
+
+  def cannot_post_bounty(title, reward:, because:)
+    @id_alias_map << title
+    result = @driver.post_bounty(title: @id_alias_map[title], reward: reward)
+    assert_includes result[:errors], "Cannot post bounty: #{because}"
   end
 
   def should_see_open_task(title, reward: ANY, posted_by: ANY)

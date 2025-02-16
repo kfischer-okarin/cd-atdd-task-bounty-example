@@ -9,6 +9,12 @@ class BountiesController < ApplicationController
     @bounty = Bounty.new(bounty_params)
     @bounty.posted_by = current_user
 
+    if current_user.balance < @bounty.reward
+      flash.now[:alert] = "Cannot post bounty: insufficient balance"
+      render :new, status: :unprocessable_entity
+      return
+    end
+
     if @bounty.save
       redirect_to root_path, notice: "Bounty was successfully posted."
     else

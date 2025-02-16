@@ -14,7 +14,7 @@ class PostBountyTest < ApplicationSystemTestCase
     end
   end
 
-  test "WIP: Users need enough balance to post a bounty" do
+  test "Users need enough balance to post a bounty" do
     given_a_user "Bob", balance: 30
 
     as "Bob" do

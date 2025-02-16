@@ -1,6 +1,16 @@
 <h1 class="title">Post a New Bounty</h1>
 
 <%= form_with model: @bounty, local: true, class: 'box' do |form| %>
+  <% if @bounty.errors.any? %>
+    <div class="notification is-danger">
+      <ul>
+        <% @bounty.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= form.label :title, class: 'label' %>
     <div class="control">
