@@ -25,8 +25,17 @@ class CapybaraAcceptanceTestDriver
 
     def teardown
       take_failed_screenshot
+      save_text_snapshot if failed?
       Capybara.reset_sessions!
       Capybara.use_default_driver
+    end
+
+    private
+
+    def save_text_snapshot
+      path = "tmp/screenshots/failures_test_#{@test_case.name}.txt"
+      File.open(path, "w") { |file| file.write(page.text) }
+      puts "[Page Text snapshot]: #{path}"
     end
   end
 end
